@@ -43,6 +43,7 @@ const Formulario = () => {
                          type="submit"
                          className="u-full-width button-primary"
                     >Agendar Cita</button>
+                    
                </form>
 
           </Fragment>
