@@ -10,7 +10,7 @@ const Login = () => {
      return ( 
           <div className="form-usuario">
                <div className="contenedor-form sombra-dark">
-                    <h1>INICIAR SESIÓN</h1>
+                    <h1>INICIO DE SESIÓN</h1>
                     <form>
                          <div className="campo-form">
                               <label htmlFor="usuario">Usuario</label>

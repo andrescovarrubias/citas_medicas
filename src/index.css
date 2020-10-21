@@ -117,8 +117,11 @@ input[type="time"] {
   justify-content: center;
   align-items: center;
 }
+.campo-form input{
+  font-size: 16px;
+}
 .iniciar_sesion:hover{
-  background-color: rgba(183, 255, 183, 0.651);
+  background-color: rgba(149, 255, 149, 0.521);
 }
 .iniciar_sesion{
   width: 100%;
