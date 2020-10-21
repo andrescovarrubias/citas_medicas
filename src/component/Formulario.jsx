@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react';
-import {v4 as uuid} from "uuid"; 
+// import {v4 as uuid} from "uuid"; 
 
 const Formulario = ({crearCita}) => {
 
@@ -40,7 +40,7 @@ const Formulario = ({crearCita}) => {
           actualizarError(false);
 
           //* Asignar un ID
-          cita.id=uuid(); //Creando un id desde la libreria uuid
+          // cita.id=uuid(); //Creando un id desde la libreria uuid
 
           //* Crear cita
           crearCita(cita);

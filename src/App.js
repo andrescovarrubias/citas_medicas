@@ -1,7 +1,14 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Formulario from './component/Formulario';
 import Cita from './component/Cita';
+import NuevaCuenta from './component/auth/NuevaCuenta';
 import PropTypes from 'prop-types';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Login from './component/Login';
 
 function App() {
@@ -65,6 +72,8 @@ function App() {
     //   </div>
     // </Fragment>
 
+
+    //* LOGIN
     <div>
       <Login/>
     </div>
