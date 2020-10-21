@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
+import {v4 as uuid} from "uuid"; 
 
-
-const Formulario = () => {
+const Formulario = ({crearCita}) => {
 
      //* Crear state de citas
      const [cita, actualizarCita] = useState({
@@ -10,8 +10,9 @@ const Formulario = () => {
           fecha:'',
           hora:'',
           sintomas:''
+     });
 
-     })
+     const [error, actualizarError] = useState(false);
 
      //* Function que se ejecuta cuando escribe el usuario
      const handleChange = e => {
@@ -21,12 +22,49 @@ const Formulario = () => {
           })
      }
 
+     //* Extraer los valores
+     const { paciente, tutor,fecha,hora,sintomas} =cita;
+
+     //* Cuando el usuario presiona el boton
+     const submitCita = e => {
+          e.preventDefault();
+          
+          //* Validar
+          if (paciente.trim() === '' || tutor.trim() === '' ||
+               fecha.trim() === '' || hora.trim() === '' || sintomas.trim() === '') {
+               actualizarError(true);
+               return;
+          }
+
+          //* Eliminar el mensaje de error
+          actualizarError(false);
+
+          //* Asignar un ID
+          cita.id=uuid(); //Creando un id desde la libreria uuid
+
+          //* Crear cita
+          crearCita(cita);
+
+          //* Reiniciar el form
+          actualizarCita({
+               paciente:'',
+               tutor:'',
+               fecha:'',
+               hora:'',
+               sintomas:''     
+          })
+     }
+
 
      return ( 
           <Fragment>
                <h2>Crear Citas:</h2>
 
-               <form action="">
+               {error ? <p className="alerta-error">Todos los campos son obligatorios</p>  : null}
+
+               <form 
+                    onSubmit={submitCita}
+               >
                     <label>Paciente:</label>
                     <input 
                          type="text" 
@@ -34,6 +72,7 @@ const Formulario = () => {
                          name="paciente"
                          className="u-full-width"
                          onChange={handleChange}
+                         value={paciente}
                     />
                     <label>Tutor:</label>
                     <input 
@@ -42,6 +81,8 @@ const Formulario = () => {
                          placeholder="Nombre del Tutor"
                          className="u-full-width"
                          onChange={handleChange}
+                         value={tutor}
+
                     />
                     <label>Fecha:</label>
                     <input 
@@ -49,6 +90,8 @@ const Formulario = () => {
                          name="fecha"
                          className="u-full-width"
                          onChange={handleChange}
+                         value={fecha}
+
                     />
                     <label>Hora:</label>
                     <input 
@@ -56,6 +99,8 @@ const Formulario = () => {
                          name="hora"
                          className="u-full-width"
                          onChange={handleChange}
+                         value={hora}
+
                     />
                     <label>Sintomas:</label>
                     <textarea 
@@ -63,6 +108,8 @@ const Formulario = () => {
                          className="u-full-width"
                          resize="none"
                          onChange={handleChange}
+                         value={sintomas}
+
                     ></textarea>
                     <button
                          type="submit"
